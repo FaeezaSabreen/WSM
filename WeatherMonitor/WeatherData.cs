@@ -30,13 +30,13 @@ public class WeatherData
         displays.Remove(display);
     }
 
-    private void NotifyObservers()
+    public void NotifyObservers()
+    {
+        foreach (IDisplay display in displays)
         {
-            foreach (IDisplay observer in observers)
-            {
-                observer.Display();
-            }
+            display.Display();
         }
+    }
 
     public void MeasurementsChanged()
     {
